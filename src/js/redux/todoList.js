@@ -38,10 +38,10 @@ const todoListReducer = (state = initialState, { type, payload }) => {
       };
     case DELETE_TODO:
       state.todos.splice(payload, 1);
-      //return { ...state};
+      return { ...state};
     case CHECK_TODO:
       state.todos[payload] = { ...state.todos[payload], checked: true };
-      //return { ...state };
+      return { ...state };
     default:
       return { ...state };
   }
