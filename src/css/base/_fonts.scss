@@ -1,0 +1,14 @@
+@use './variables' as var;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+body {
+  font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+h1.logo {
+  font-family: 'Rock Salt', cursive;
+}

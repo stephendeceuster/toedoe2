@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+@import "../../../icons/style.css";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+h1.logo {
+  font-family: "Rock Salt", cursive;
+}
+
+input:-webkit-autofill,
+:focus {
+  outline: none !important;
+}
+
+body {
+  background: #eef3f6;
+}
+
+.todoApp {
+  width: 90%;
+  max-width: 34rem;
+  margin: 2rem auto;
+}
+.todoApp h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #19ba99;
+  margin-bottom: 2rem;
+  transform: rotate(-10deg);
+  text-shadow: #eef3f6 2px 2px 0px, rgba(99, 198, 170, 0.4) 4px 4px 0px;
+}
+.todoApp__form {
+  background-color: #19ba99;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 1.125rem;
+  display: flex;
+  justify-items: flex-start;
+  margin-bottom: 1rem;
+  box-shadow: 0px 15px 10px -15px #cbd5d2;
+}
+.todoApp__form__input {
+  color: #fff;
+  background-color: #65c4ae;
+  border-radius: 0.5rem 4.125rem 4.125rem 0.5rem;
+  border: none;
+  padding-left: 1.5rem;
+  padding-right: 5rem;
+  width: 100%;
+  margin-right: -4.125rem;
+  font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+  font-size: 1rem;
+  /*&--error {
+    box-shadow: 0 0 0 0.5rem var.$red;
+    color: var.$red;
+    background-color: var.$white;
+    &::placeholder {
+      color: var.$red;
+    }
+  }*/
+}
+.todoApp__form__input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+.todoApp__form__input:focus {
+  outline: none;
+}
+.todoApp__form__button {
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  align-items: center;
+  color: #19ba99;
+  background-color: #fff;
+  width: 4.15rem;
+  height: 4.15rem;
+  border: 2px solid #19ba99;
+  border-radius: 50%;
+  transition: all 200ms ease-in;
+}
+.todoApp__form__button:hover {
+  color: #fff;
+  background-color: #19ba99;
+  border: 2px solid #fff;
+}
+.todoApp__form--error {
+  background-color: #d13947;
+}
+.todoApp__form--error .todoApp__form__input {
+  background-color: #fff;
+  color: #d13947;
+}
+.todoApp__form--error .todoApp__form__input::placeholder {
+  color: #d13947;
+}
+.todoApp__form--error .todoApp__form__button {
+  background-color: rgba(209, 57, 71, 0.5);
+  color: #fff;
+}
+.todoApp__form--error .todoApp__form__button:hover {
+  border: none;
+  background-color: rgba(209, 57, 71, 0.75);
+}
+.todoApp__list {
+  width: 100%;
+  padding: 0 1.125rem;
+}
+.todoApp__list__item {
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 1rem 1rem 1rem 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 15px 10px -15px #cbd5d2;
+}
+.todoApp__list__item .textwrap {
+  display: inline-block;
+  margin-right: auto;
+  max-width: calc(100% - 6rem);
+  line-height: 1.25rem;
+}
+.todoApp__list__item .textwrap .text {
+  width: calc(100%);
+  background-image: linear-gradient(transparent 0.55rem, #19ba99 0.55rem, #19ba99 0.65rem, transparent 0.65rem);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 400ms;
+}
+.todoApp__list a.icn {
+  color: #19ba99;
+  display: flex;
+  align-items: center;
+}
+.todoApp__list a.icn--remove {
+  color: #bcccc6;
+  font-size: 1.1rem;
+  position: relative;
+  transition: all 200ms ease-in;
+}
+.todoApp__list a.icn--remove:hover {
+  color: #d13947;
+}
+.todoApp__list a.icn--remove::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 2rem;
+  position: absolute;
+  background-color: rgba(188, 204, 198, 0.4);
+  right: -0.75rem;
+  cursor: default;
+}
+.todoApp__list a.icn--check {
+  border-radius: 50%;
+  border: 2px solid #19ba99;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 1.5rem;
+  transition: all 200ms ease-in;
+}
+.todoApp__list a.icn--check:hover {
+  background-color: #19ba99;
+  color: #fff;
+}
+.todoApp__list a.icn--check .icon-checkmark {
+  position: absolute;
+}
+.todoApp__list__item--checked div.textwrap span.text {
+  background-size: 100% 100%;
+  transition: background-size 400ms;
+  color: rgba(24, 24, 24, 0.4);
+}
+.todoApp__list__item--checked a.icn--check {
+  background-color: #19ba99;
+  color: #fff;
+}
+
+/*# sourceMappingURL=style.css.map */

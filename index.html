@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToeDoe2</title>
+    <link rel="stylesheet" href="./build/css/style.css">
+</head>
+
+<body>
+    <div class="todoApp">
+        <h1 class=logo>Toedoe2</h1>
+        <form action="" class="todoApp__form  /*todoApp__form--error*/">
+            <input type="text" class="todoApp__form__input todoApp__form__input--error" autofocus
+                placeholder="Enter an activity.." />
+            <a type="submit" class="todoApp__form__button">
+                <svg class="icon icon-bin">
+                    <use xlink:href="./icons/symbol-defs.svg#icon-plus"></use>
+                </svg>
+            </a>
+        </form>
+        <div class="todoApp__list-holder">
+            <ul class="todoApp__list">
+                <li class="todoApp__list__item ">
+                    <div class="textwrap"><span class="text">Clean my car</span></div>
+                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
+                        </svg></a>
+                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
+                        </svg></a>
+                </li>
+                <li class="todoApp__list__item todoApp__list__item--checked">
+                    <div class="textwrap"><span class="text">Clean my car and do other stuff, but also take breaks so
+                            this will be a multiline listitem</span></div>
+                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
+                        </svg></a>
+                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
+                        </svg></a>
+                </li>
+                <li class="todoApp__list__item ">
+                    <div class="textwrap"><span class="text">Clean my car</span></div>
+                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
+                        </svg></a>
+                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
+                        </svg></a>
+                </li>
+                <li class="todoApp__list__item todoApp__list__item--checked">
+                    <div class="textwrap"><span class="text">Clean my car</span></div>
+                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
+                        </svg></a>
+                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                            <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
+                        </svg></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script defer src="./icons/svgxuse.js"></script>
+
+    <script src="./build/js/bundle.js"></script>
+</body>
+
+</html>

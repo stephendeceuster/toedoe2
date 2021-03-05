@@ -1,0 +1,38 @@
+{
+  "name": "toedoe2",
+  "version": "1.0.0",
+  "description": "ToDoApp",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npm-run-all --parallel sass-dev js-dev server-dev",
+    "sass-dev": "sass ./src/css/style.scss build/css/style.css --watch",
+    "js-dev": "parcel watch ./src/js/index.js --out-dir ./build/js --out-file bundle.js --public-url ./",
+    "server-dev": "live-server --entry-file=index.html",
+    "build": "npm-run-all --serial clean sass-prod js-prod",
+    "clean": "rm -rf ./build/ ./.cache",
+    "sass-prod": "sass ./src/css/style.scss build/css/style.css --no-source-map --style=compressed",
+    "js-prod": "parcel build ./src/js/index.js --out-dir ./build/js --out-file bundle.js  --no-source-maps",
+    "deploy": "surge . --domain https://toedoe2.surge.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephendeceuster/toedoe2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephendeceuster/toedoe2/issues"
+  },
+  "homepage": "https://github.com/stephendeceuster/toedoe2#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
+    "immer": "^8.0.1",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

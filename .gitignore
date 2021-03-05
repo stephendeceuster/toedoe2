@@ -1,0 +1,4 @@
+--assests
+dist
+node_modules
+.cache
