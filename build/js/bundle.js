@@ -1177,11 +1177,14 @@ const initialState = {
   todos: [{
     todo: "Make your first todo",
     checked: false
-  }, {
-    todo: "Second todo",
-    checked: true
   }]
-}; // TYPES
+};
+
+if (localStorage.getItem('toedoe2')) {
+  const persisted = JSON.parse(localStorage.getItem('toedoe2'));
+  initialState.todos = [...persisted.state];
+} // TYPES
+
 
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
@@ -1215,7 +1218,6 @@ const todoListReducer = (state = initialState, {
 }) => {
   switch (type) {
     case ADD_TODO:
-      //state.todos.push({ todo: payload, checked: false });
       return { ...state,
         todos: [...state.todos, {
           todo: payload,
@@ -1224,15 +1226,17 @@ const todoListReducer = (state = initialState, {
       };
 
     case DELETE_TODO:
-      state.todos.splice(payload, 1);
-      return { ...state
+      const copyForDelete = [...state.todos];
+      copyForDelete.splice(payload, 1);
+      return { ...state,
+        todos: [...copyForDelete]
       };
 
     case CHECK_TODO:
-      state.todos[payload] = { ...state.todos[payload],
-        checked: true
-      };
-      return { ...state
+      const copyForCheck = [...state.todos];
+      copyForCheck[payload].checked = !copyForCheck[payload].checked;
+      return { ...state,
+        todos: [...copyForCheck]
       };
 
     default:
@@ -1321,24 +1325,14 @@ class ToDoList {
       this._inputRef.value = "";
     });
 
-    this._listRef.querySelectorAll(".icn--check").forEach((todo, index) => {
-      const check = e => {
-        e.preventDefault();
+    this._listRef.addEventListener("click", e => {
+      if (e.target.classList.contains("icn--check")) {
+        _store.default.dispatch((0, _todoList.checkToDo)(e.target.parentElement.dataset.index));
+      }
 
-        _store.default.dispatch((0, _todoList.checkToDo)(index));
-      };
-
-      todo.addEventListener("click", check);
-    });
-
-    this._listRef.querySelectorAll(".icn--remove").forEach((todo, index) => {
-      const deleting = e => {
-        e.preventDefault();
-
-        _store.default.dispatch((0, _todoList.deleteToDo)(index));
-      };
-
-      todo.addEventListener("click", deleting);
+      if (e.target.classList.contains("icn--remove")) {
+        _store.default.dispatch((0, _todoList.deleteToDo)(e.target.parentElement.dataset.index));
+      }
     });
   };
   render = () => {
@@ -1347,7 +1341,7 @@ class ToDoList {
     } = _store.default.getState();
 
     if (todos) {
-      this._listRef.innerHTML = todos.map(item => {
+      this._listRef.innerHTML = todos.map((item, index) => {
         let addClass = "";
 
         if (item.checked) {
@@ -1355,19 +1349,24 @@ class ToDoList {
         }
 
         return `
-                <li class="todoApp__list__item ${addClass}">
+                <li class="todoApp__list__item ${addClass}" data-index="${index}">
                     <div class="textwrap"><span class="text">${item.todo}</span></div>
-                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                    <span href="#" class="icn icn--remove"><svg class="icon icon-bin">
                         <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
-                    </svg></a>
-                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                    </svg></span>
+                    <span href="#" class="icn icn--check"><svg class="icon icon-checkmark">
                         <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
-                    </svg></a>
+                    </svg></span>
                 </li> `;
-      }).join('');
+      }).join("");
     }
 
-    this.setupEvents();
+    this.saveToPersist();
+  };
+  saveToPersist = () => {
+    localStorage.setItem("toedoe2", JSON.stringify({
+      state: _store.default.getState().todos
+    }));
   };
 }
 
@@ -1413,7 +1412,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65416" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

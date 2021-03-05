@@ -132,10 +132,14 @@ body {
         }
       }
     }
-    a.icn {
+    span.icn {
       color: var.$green;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      > * {
+        pointer-events: none;
+      }
       &--remove {
         color: var.$bin-grey;
         font-size: 1.1rem;
@@ -182,7 +186,7 @@ body {
           color: rgba(var.$text-black, 0.4);
         }
       }
-      a.icn--check {
+      span.icn--check {
         background-color: var.$green;
         color: var.$white;
       }

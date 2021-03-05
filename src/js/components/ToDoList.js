@@ -41,44 +41,49 @@ class ToDoList {
       store.dispatch(addToDo(this._inputRef.value));
       this._inputRef.value = "";
     });
-    this._listRef.querySelectorAll(".icn--check").forEach((todo, index) => {
-      const check = (e) => {
-        e.preventDefault();
-        store.dispatch(checkToDo(index));
-      };
-      todo.addEventListener("click", check);
-    });
-    this._listRef.querySelectorAll(".icn--remove").forEach((todo, index) => {
-      const deleting = (e) => {
-        e.preventDefault();
-        store.dispatch(deleteToDo(index));
-      };
-      todo.addEventListener("click", deleting);
+    this._listRef.addEventListener("click", (e) => {
+      if (e.target.classList.contains("icn--check")) {
+        store.dispatch(checkToDo(e.target.parentElement.dataset.index));
+      }
+      if (e.target.classList.contains("icn--remove")) {
+        store.dispatch(deleteToDo(e.target.parentElement.dataset.index));
+      }
     });
   };
 
   render = () => {
     const { todos } = store.getState();
-    if ( todos ) {
-      this._listRef.innerHTML = todos.map((item) => {
-        let addClass = "";
-        if (item.checked) {
-          addClass = "todoApp__list__item--checked";
-        }
-        return `
-                <li class="todoApp__list__item ${addClass}">
+    if (todos) {
+      this._listRef.innerHTML = todos
+        .map((item, index) => {
+          let addClass = "";
+          if (item.checked) {
+            addClass = "todoApp__list__item--checked";
+          }
+          return `
+                <li class="todoApp__list__item ${addClass}" data-index="${index}">
                     <div class="textwrap"><span class="text">${item.todo}</span></div>
-                    <a href="#" class="icn icn--remove"><svg class="icon icon-bin">
+                    <span href="#" class="icn icn--remove"><svg class="icon icon-bin">
                         <use xlink:href="./icons/symbol-defs.svg#icon-bin"></use>
-                    </svg></a>
-                    <a href="#" class="icn icn--check"><svg class="icon icon-checkmark">
+                    </svg></span>
+                    <span href="#" class="icn icn--check"><svg class="icon icon-checkmark">
                         <use xlink:href="./icons/symbol-defs.svg#icon-checkmark"></use>
-                    </svg></a>
-                </li> `
-      }).join('');
+                    </svg></span>
+                </li> `;
+        })
+        .join("");
     }
-    this.setupEvents();
+    this.saveToPersist();
   };
+
+  saveToPersist = () => {
+    localStorage.setItem(
+        "toedoe2",
+        JSON.stringify({
+          state: store.getState().todos,
+        })
+      );
+  }
 }
 
 export default (holder) => new ToDoList(holder);
