@@ -13,10 +13,10 @@ class ToDoList {
     store.subscribe(this.render.bind(this));
   }
 
-  init = () => {
+  init()  {
     this._holder.innerHTML = `
-            <h1 class=logo>Toedoe2</h1>
-            <form action="" class="todoApp__form  /*todoApp__form--error*/">
+            <h1 class="logo">Toedoe2</h1>
+            <form action="" class="todoApp__form">
                 <input type="text" class="todoApp__form__input todoApp__form__input--error" autofocus placeholder="Enter an activity.." />
                 <button type="submit" class="todoApp__form__button">
                     <svg class="icon icon-bin">
@@ -35,7 +35,7 @@ class ToDoList {
     this._listRef = this._holder.querySelector(".todoApp__list");
   };
 
-  setupEvents = () => {
+  setupEvents() {
     this._formRef.addEventListener("submit", (e) => {
       e.preventDefault();
       store.dispatch(addToDo(this._inputRef.value));
@@ -51,7 +51,7 @@ class ToDoList {
     });
   };
 
-  render = () => {
+  render() {
     const { todos } = store.getState();
     if (todos) {
       this._listRef.innerHTML = todos
@@ -78,12 +78,12 @@ class ToDoList {
 
   saveToPersist = () => {
     localStorage.setItem(
-        "toedoe2",
-        JSON.stringify({
-          state: store.getState().todos,
-        })
-      );
-  }
+      "toedoe2",
+      JSON.stringify({
+        state: store.getState().todos,
+      })
+    );
+  };
 }
 
 export default (holder) => new ToDoList(holder);
